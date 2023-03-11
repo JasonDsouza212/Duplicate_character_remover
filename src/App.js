@@ -5,6 +5,7 @@ function App() {
   const [inputValue, setInputValue] = useState('');
   const [stringToEdit, setStringToEdit] = useState('');
   const [resultString, setResultString] = useState('');
+  const [originalString, setOriginalString] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -12,6 +13,7 @@ function App() {
       alert('Please provide a non-empty value.');
     } else {
       setStringToEdit(inputValue);
+      setOriginalString(inputValue);
       setInputValue('');
     }
   };
@@ -27,17 +29,18 @@ function App() {
   //   setResultString(newString);
   //   setStringToEdit(newString);
   // };
-  const handleDeleteChar = (charToDelete) => {
+  const handleDeleteChar = (charToDelete,index) => {
     let charArray = stringToEdit.split('');
     let i = 0;
     while (i < charArray.length) {
-      if (charArray[i] === charToDelete) {
+      if (charArray[i] === charToDelete && i!==index) {
         const startIndex = i;
         let count = 0;
-        while (i < charArray.length && charArray[i] === charToDelete) {
+        while (i < charArray.length && charArray[i] === charToDelete && i!==index) {
           count++;
           i++;
         }
+        
         charArray.splice(startIndex, count);
       } else {
         i++;
@@ -63,20 +66,22 @@ function App() {
     }
 
     const renderedChars = [];
+    let ind=0;
     for (const char of stringToRender) {
       const count = charCounts[char];
       const color = count > 1 ? `rgb(${255 - (count * 20)}, 255, 255)` : '#fff';
       renderedChars.push(
         <div
-          key={`${char}_${count}`}
+          key={ind}
           className="char-card"
           style={{ backgroundColor: color }}
-          onClick={() => count > 1 && handleDeleteChar(char)}
+          onClick={() => count > 1 && handleDeleteChar(char,ind)}
         >
           <span className="char">{char}</span>
           {count > 1 && <span className="delete-icon">X</span>}
         </div>
       );
+      ind=ind+1;
     }
 
     return renderedChars;
@@ -85,6 +90,7 @@ function App() {
   const handleGoBack = () => {
     setStringToEdit('');
     setResultString('');
+    setOriginalString('');
   };
 
   return (
@@ -92,7 +98,7 @@ function App() {
       {stringToEdit ? (
         <div>
           <h1>Duplicate Character Remover</h1>
-          <h2>Original String: {stringToEdit}</h2>
+          <h2>Original String: {originalString}</h2>
           <div className="string-container">{renderString(stringToEdit)}</div>
           {resultString ? (
             <div>
