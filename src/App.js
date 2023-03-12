@@ -22,35 +22,43 @@ function App() {
     setInputValue(event.target.value);
   };
 
-  // const handleDeleteChar = (charToDelete) => {
-  //   const charArray = stringToEdit.split('');
-  //   const filteredArray = charArray.filter((char) => char !== charToDelete);
-  //   const newString = filteredArray.join('');
+  const handleDeleteChar = (charToDelete,index) => {
+    // const charArray = stringToEdit.split('');
+    // const filteredArray = charArray.filter((char) => char !== charToDelete);
+    // const newString = filteredArray.join('');
+    console.log(index+" this is the index")
+        let ans="";
+        for(let i=0;i<stringToEdit.length;i++){
+            if(stringToEdit[i]!==charToDelete || i===index){
+                ans=ans+stringToEdit[i];
+            }
+            
+        }
+    setResultString(ans);
+    setStringToEdit(ans);
+  };
+  // const handleDeleteChar = (charToDelete,index) => {
+  //   let charArray = stringToEdit.split('');
+  //   let i = 0;
+  //   while (i < charArray.length) {
+  //     if (charArray[i] === charToDelete && i!==index) {
+  //       const startIndex = i;
+  //       let count = 0;
+  //       while (i < charArray.length && charArray[i] === charToDelete && i!==index) {
+  //         count++;
+  //         i++;
+  //       }
+        
+  //       charArray.splice(startIndex, count);
+  //     } else {
+  //       i++;
+  //     }
+  //   }
+  //   const newString = charArray.join('');
   //   setResultString(newString);
   //   setStringToEdit(newString);
-  // };
-  const handleDeleteChar = (charToDelete,index) => {
-    let charArray = stringToEdit.split('');
-    let i = 0;
-    while (i < charArray.length) {
-      if (charArray[i] === charToDelete && i!==index) {
-        const startIndex = i;
-        let count = 0;
-        while (i < charArray.length && charArray[i] === charToDelete && i!==index) {
-          count++;
-          i++;
-        }
-        
-        charArray.splice(startIndex, count);
-      } else {
-        i++;
-      }
-    }
-    const newString = charArray.join('');
-    setResultString(newString);
-    setStringToEdit(newString);
   
-  };
+  // };
 
 
   const renderString = (stringToRender) => {
@@ -66,22 +74,24 @@ function App() {
     }
 
     const renderedChars = [];
-    let ind=0;
-    for (const char of stringToRender) {
-      const count = charCounts[char];
+    // let ind=0;
+    
+    for (let ind=0;ind<stringToRender.length;ind++) {
+      console.log(ind+""+stringToRender[ind])
+      const count = charCounts[stringToRender[ind]];
       const color = count > 1 ? `rgb(${255 - (count * 20)}, 255, 255)` : '#fff';
       renderedChars.push(
         <div
           key={ind}
           className="char-card"
           style={{ backgroundColor: color }}
-          onClick={() => count > 1 && handleDeleteChar(char,ind)}
+          onClick={() => count > 1 && handleDeleteChar(stringToRender[ind],ind)}
         >
-          <span className="char">{char}</span>
+          <span className="char">{stringToRender[ind]}</span>
           {count > 1 && <span className="delete-icon">X</span>}
         </div>
       );
-      ind=ind+1;
+      // ind=ind+1;
     }
 
     return renderedChars;
