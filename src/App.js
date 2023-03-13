@@ -12,8 +12,8 @@ function App() {
     if (inputValue.trim() === '') {
       alert('Please provide a non-empty value.');
     } else {
-      setStringToEdit(inputValue.replace(/\s+/g, ' ').trim().toLowerCase());
-      setOriginalString(inputValue.replace(/\s+/g, ' ').trim().toLowerCase());
+      setStringToEdit(inputValue.replace(/\s+/g, ' ').trim().toUpperCase());
+      setOriginalString(inputValue.replace(/\s+/g, ' ').trim().toUpperCase());
       setInputValue('');
     }
   };
@@ -100,7 +100,7 @@ function App() {
         {success ? ( 
           <h2 className="success-header">Success! No more duplicates.</h2>
         ) : (
-          <h2 className="edit-header">Please click on a character to delete all its duplicates<br/> because there are some characters that are repeating</h2>
+          <h2 className="edit-header">click on a character to delete all of its duplicates, as there are some characters that are repeating</h2>
         )}
       </div>
     );
@@ -152,24 +152,37 @@ function App() {
   return (
     <div className="app">
       {stringToEdit ? (
-        <div>
-          <h1>Duplicate Character Remover</h1>
-          <h2>Original String: {originalString}</h2>
+        <div className='middle'>
+          {/* <h1>Duplicate Character Remover</h1> */}
+          <h1 class="large rise">Duplicate Character Remover</h1>
+          <article class="cta">
+            <div class="cta__text-column">
+              <h2>Original String </h2>
+              <a href="##">{originalString}</a>
+            </div>
+          </article>
+          {/* <h2>Original String: {originalString}</h2> */}
           <div className="string-container">{renderString(stringToEdit)}</div>
           {resultString && (
             <div>
-              <h2>Resultant String: {resultString}</h2>
+          <article class="cta">
+            <div class="cta__text-column">
+              <h2>Resultant String</h2>
+              <a href="##">{resultString}</a>
+            </div>
+          </article>
+              {/* <h2>Resultant String: {resultString}</h2> */}
               {/* <h2 className="success-header">Success! No more duplicates.</h2> */}
             </div>
           )}
-          <button className="back-button" onClick={handleGoBack}>
+          <button className="back-button btn" onClick={handleGoBack}>
             Back
           </button>
         </div>
       ) : (
         <form className="input-form" onSubmit={handleSubmit}>
-          <h1>Duplicate Character Remover</h1>
-          <label htmlFor="input-field">Enter a string:</label>
+          <h1 class="large rise">Duplicate Character Remover</h1>
+          <label htmlFor="input-field" className='input-title'>Enter a string:</label>
           <input
             type="text"
             id="input-field"
@@ -177,7 +190,7 @@ function App() {
             value={inputValue}
             onChange={handleInputChange}
           />
-          <button type="submit" className="submit-button">
+          <button type="submit" className="submit-button btn">
             Submit
           </button>
         </form>
