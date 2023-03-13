@@ -4,7 +4,7 @@
 }
 
 body {
-  background-color: #f6f8fa;
+  background-color: #1f1f1f;
   margin: 0;
   padding: 0;
 }
@@ -34,7 +34,9 @@ h2 {
 .success-header {
   color: #4caf50;
 }
-
+.edit-header {
+  color: #f8190d;
+}
 .input-form {
   display: flex;
   flex-direction: column;
@@ -106,4 +108,15 @@ input {
   font-size: 2rem;
   font-weight: bold;
   color: #d32f2f;
+}
+
+.back-button{
+  background-color: #28527a;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }

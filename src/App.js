@@ -12,8 +12,8 @@ function App() {
     if (inputValue.trim() === '') {
       alert('Please provide a non-empty value.');
     } else {
-      setStringToEdit(inputValue);
-      setOriginalString(inputValue);
+      setStringToEdit(inputValue.replace(/\s+/g, ' ').trim().toLowerCase());
+      setOriginalString(inputValue.replace(/\s+/g, ' ').trim().toLowerCase());
       setInputValue('');
     }
   };
@@ -59,8 +59,6 @@ function App() {
   //   setStringToEdit(newString);
   
   // };
-
-
   const renderString = (stringToRender) => {
     const charCounts = {};
     let maxCount = 1;
@@ -72,14 +70,14 @@ function App() {
         charCounts[char] = 1;
       }
     }
-
+  
     const renderedChars = [];
-    // let ind=0;
+    let success = true;
     
     for (let ind=0;ind<stringToRender.length;ind++) {
-      console.log(ind+""+stringToRender[ind])
+      
       const count = charCounts[stringToRender[ind]];
-      const color = count > 1 ? `rgb(${255 - (count * 20)}, 255, 255)` : '#fff';
+      const color = count > 1 && stringToRender[ind]!==" " ? `rgb(${255 - (count * 20)}, 255, 255)` : '#fff';
       renderedChars.push(
         <div
           key={ind}
@@ -88,14 +86,62 @@ function App() {
           onClick={() => count > 1 && handleDeleteChar(stringToRender[ind],ind)}
         >
           <span className="char">{stringToRender[ind]}</span>
-          {count > 1 && <span className="delete-icon">X</span>}
+          {count > 1 && stringToRender[ind]!==" " && <span className="delete-icon">X</span>}
         </div>
       );
-      // ind=ind+1;
+      if (count > 1) {
+        success = false;
+      }
     }
-
-    return renderedChars;
+  
+    return (
+      <div className="render-container">
+        <div className="string-container">{renderedChars}</div> 
+        {success ? ( 
+          <h2 className="success-header">Success! No more duplicates.</h2>
+        ) : (
+          <h2 className="edit-header">Please click on a character to delete all its duplicates<br/> because there are some characters that are repeating</h2>
+        )}
+      </div>
+    );
   };
+  
+
+  // const renderString = (stringToRender) => {
+  //   const charCounts = {};
+  //   let maxCount = 1;
+  //   for (const char of stringToRender) {
+  //     if (charCounts[char]) {
+  //       charCounts[char]++;
+  //       maxCount = Math.max(maxCount, charCounts[char]);
+  //     } else {
+  //       charCounts[char] = 1;
+  //     }
+  //   }
+
+  //   const renderedChars = [];
+  //   // let ind=0;
+    
+  //   for (let ind=0;ind<stringToRender.length;ind++) {
+  //     console.log(ind+""+stringToRender[ind])
+  //     const count = charCounts[stringToRender[ind]];
+  //     const color = count > 1 ? `rgb(${255 - (count * 20)}, 255, 255)` : '#fff';
+  //     renderedChars.push(
+  //       <div
+  //         key={ind}
+  //         className="char-card"
+  //         style={{ backgroundColor: color }}
+  //         onClick={() => count > 1 && handleDeleteChar(stringToRender[ind],ind)}
+  //       >
+  //         <span className="char">{stringToRender[ind]}</span>
+  //         {count > 1 && <span className="delete-icon">X</span>}
+  //       </div>
+  //     );
+  //     // ind=ind+1;
+  //   }
+
+  //   return renderedChars;
+  // };
 
   const handleGoBack = () => {
     setStringToEdit('');
@@ -110,13 +156,11 @@ function App() {
           <h1>Duplicate Character Remover</h1>
           <h2>Original String: {originalString}</h2>
           <div className="string-container">{renderString(stringToEdit)}</div>
-          {resultString ? (
+          {resultString && (
             <div>
               <h2>Resultant String: {resultString}</h2>
-              <h2 className="success-header">Success! No more duplicates.</h2>
+              {/* <h2 className="success-header">Success! No more duplicates.</h2> */}
             </div>
-          ) : (
-            <h2>Please click on a character to delete all duplicates.</h2>
           )}
           <button className="back-button" onClick={handleGoBack}>
             Back
