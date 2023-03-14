@@ -1,157 +1,9 @@
-/* * {
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-body {
-  background-color: #f6f8fa;
-  margin: 0;
-  padding: 0;
-}
-
-.app {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 50px;
-}
-
-h1 {
-  font-size: 3rem;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 30px;
-  color: #28527a;
-}
-
-h2 {
-  font-size: 2rem;
-  font-weight: bold;
-  margin: 20px 0;
-  color: #28527a;
-}
-
-.success-header {
-  color: #4caf50;
-}
-.edit-header {
-  color: #f8190d;
-}
-.input-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-label {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #28527a;
-  margin-bottom: 10px;
-}
-
-input {
-  padding: 10px;
-  font-size: 1.5rem;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  margin-bottom: 20px;
-  width: 300px;
-}
-
-.submit-button {
-  background-color: #28527a;
-  color: #fff;
-  padding: 10px 20px;
-  font-size: 1.5rem;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-
-.submit-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
-}
-
-.string-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  max-width: 80vw;
-}
-
-.char-card {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 10px;
-  padding: 20px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-
-.char-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
-}
-
-.char {
-  font-size: 3rem;
-  font-weight: bold;
-  margin-right: 10px;
-}
-
-.delete-icon {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #d32f2f;
-}
-
-.back-button{
-  background-color: #28527a;
-  color: #fff;
-  padding: 10px 20px;
-  font-size: 1.5rem;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-} */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
-
 body,
 html {
 	height: 100%;
 	background-color: #ffdd40;
 	color: #333;
-}
-.large {
-	font-size: 6rem;
-  font-family: "Audiowide", cursive;
-  margin-bottom: 15px;
-  text-align: center;
 }
 
 .app {
@@ -161,16 +13,15 @@ html {
   margin-top: 10px;
 }
 
-h1, h2, h3 {
-  margin-top: 0;
+.large {
+	font-size: 6rem;
+  font-family: "Audiowide", cursive;
+  margin-bottom: 15px;
+  text-align: center;
 }
 
-.card {
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  border-radius: 5px;
-  flex: 1 1 300px;
+h1, h2, h3 {
+  margin-top: 0;
 }
 
 .input-form {
@@ -197,14 +48,6 @@ input {
 
 .input-title{
   color: #333;
-}
-
-.result-container {
-  margin-top: 20px;
-}
-
-.result-header {
-  margin-top: 0;
 }
 
 .string-container {
@@ -273,56 +116,25 @@ input {
   display: inline-block; 
 }
 
-
-@media only screen and (max-width: 768px) {
-  main {
-    flex-direction: column;
-  }
-
-  .card {
-    flex: 1 1 auto;
-  }
-
-  form {
-    flex-direction: column;
-  }
-
-  form button {
-    margin-top: 10px;
-    margin-left: 0;
-  }
-  .large{
-    font-size: 2rem;
-  }
+.cta {
+  font-family: "Open Sans", sans-serif;
+  --shadowColor: 187 60% 40%;
+  display: flex;
+  flex-wrap: wrap;
+  background: hsl(187 70% 85%);
+  max-width: 30rem;
+  width: 100%;
+  box-shadow: 0.65rem 0.65rem 0 hsl(var(--shadowColor) / 1);
+  border-radius: 0.8rem;
+  overflow: hidden;
+  border: 0.5rem solid;
+  margin-bottom: 30px;
 }
 
-  
-  
-  
-  
-  .cta h2{
-    color: black;
-  }
-  @media (min-width: 50em) {
-    h2 {
-      font-size: 1.8rem;
-    }
-  }
-  
-  .cta {
-    font-family: "Open Sans", sans-serif;
-    --shadowColor: 187 60% 40%;
-    display: flex;
-    flex-wrap: wrap;
-    background: hsl(187 70% 85%);
-    max-width: 30rem;
-    width: 100%;
-    box-shadow: 0.65rem 0.65rem 0 hsl(var(--shadowColor) / 1);
-    border-radius: 0.8rem;
-    overflow: hidden;
-    border: 0.5rem solid;
-    margin-bottom: 30px;
-  }
+.cta h2{
+  color: black;
+}
+
   .cta__text-column {
     padding: min(2rem, 5vw) min(2rem, 5vw) min(2.5rem, 5vw);
     flex: 1 0 50%;
@@ -369,51 +181,73 @@ input {
     outline: none;
   }
 
+@media only screen and (max-width: 576px) {
+  header {
+  padding: 10px;
+  font-size: 14px;
+  }
+  
+  main {
+  margin-top: 10px;
+  }
+  
+  .card {
+  flex: 1 1 auto;
+  }
+  
+  form input[type="text"] {
+  font-size: 14px;
+  }
+  
+  form button {
+  font-size: 14px;
+  }
+  
+  .char-card {
+  width: 40px;
+  height: 40px;
+  }
+  
+  .char {
+  font-size: 20px;
+  }
+  
+  .delete-icon {
+  width: 18px;
+  height: 18px;
+  font-size: 12px;
+  top: 3px;
+  right: 3px;
+  }
+  .cta{
+    max-width: 22rem;
+  }
+}
+  
+@media only screen and (max-width: 768px) {
+  main {
+    flex-direction: column;
+  }
 
-
-
-  @media only screen and (max-width: 576px) {
-    header {
-    padding: 10px;
-    font-size: 14px;
-    }
-    
-    main {
-    margin-top: 10px;
-    }
-    
-    .card {
+  .card {
     flex: 1 1 auto;
-    }
-    
-    form input[type="text"] {
-    font-size: 14px;
-    }
-    
-    form button {
-    font-size: 14px;
-    }
-    
-    .char-card {
-    width: 40px;
-    height: 40px;
-    }
-    
-    .char {
-    font-size: 20px;
-    }
-    
-    .delete-icon {
-    width: 18px;
-    height: 18px;
-    font-size: 12px;
-    top: 3px;
-    right: 3px;
-    }
-    .cta{
-      max-width: 22rem;
-    }
-    }
-    
+  }
 
+  form {
+    flex-direction: column;
+  }
 
+  form button {
+    margin-top: 10px;
+    margin-left: 0;
+  }
+  .large{
+    font-size: 2rem;
+  }
+}
+    
+@media (min-width: 50em) {
+  h2 {
+    font-size: 1.8rem;
+  }
+}
