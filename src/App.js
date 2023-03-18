@@ -7,6 +7,7 @@ function App() {
   const [resultString, setResultString] = useState('');
   const [originalString, setOriginalString] = useState('');
 
+// To submit the input and save
 const handleSubmit = (event) => {
   event.preventDefault();
   if (inputValue.trim() === '') {
@@ -18,10 +19,12 @@ const handleSubmit = (event) => {
   }
 };
 
+// To save the input value in inputValue
 const handleInputChange = (event) => {
   setInputValue(event.target.value);
 };
 
+// This function deletes the same character,
 const handleDeleteChar = (charToDelete,index) => {
   console.log(index+" this is the index")
       let ans="";
@@ -35,6 +38,7 @@ const handleDeleteChar = (charToDelete,index) => {
   setStringToEdit(ans);
 };
  
+// The card is designed here
 const renderString = (stringToRender) => {
   stringToRender = stringToRender.replace(/\s+/g, ' ').trim()
   const charCounts = {};
@@ -80,6 +84,7 @@ const renderString = (stringToRender) => {
   );
 };
 
+// sets all values to empty 
   const handleGoBack = () => {
     setStringToEdit('');
     setResultString('');
@@ -89,28 +94,30 @@ const renderString = (stringToRender) => {
   return (
     <div className="app">
       {stringToEdit ? (
-        <div className='middle'>
+        <div>
           <h1 class="large rise">Duplicate Character Remover</h1>
-          <article class="cta">
-            <div class="cta__text-column">
-              <h2>Original String </h2>
-              <a href="##">{originalString}</a>
-            </div>
-          </article>
-          <div className="string-container">{renderString(stringToEdit)}</div>
-          {resultString && (
-          <div>
+          <div className='middle'>
             <article class="cta">
               <div class="cta__text-column">
-                <h2>Resultant String</h2>
-                <a href="##">{resultString}</a>
+                <h2>Original String </h2>
+                <a href="##">{originalString}</a>
               </div>
             </article>
+            <div className="string-container">{renderString(stringToEdit)}</div>
+            {resultString && (
+            <div>
+              <article class="cta">
+                <div class="cta__text-column">
+                  <h2>Resultant String</h2>
+                  <a href="##">{resultString}</a>
+                </div>
+              </article>
+            </div>
+            )}
+            <button className="back-button btn" onClick={handleGoBack}>
+              Back
+            </button>
           </div>
-          )}
-          <button className="back-button btn" onClick={handleGoBack}>
-            Back
-          </button>
         </div>
       ) : (
         <form className="input-form" onSubmit={handleSubmit}>
