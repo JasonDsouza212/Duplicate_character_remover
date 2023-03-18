@@ -36,12 +36,11 @@ const handleDeleteChar = (charToDelete,index) => {
 };
  
 const renderString = (stringToRender) => {
+  stringToRender = stringToRender.replace(/\s+/g, ' ').trim()
   const charCounts = {};
-  let maxCount = 1;
   for (const char of stringToRender) {
     if (charCounts[char]) {
       charCounts[char]++;
-      maxCount = Math.max(maxCount, charCounts[char]);
     } else {
       charCounts[char] = 1;
     }
@@ -58,13 +57,13 @@ const renderString = (stringToRender) => {
         key={ind}
         className="char-card"
         style={{ backgroundColor: color }}
-        onClick={() => count > 1 && handleDeleteChar(stringToRender[ind],ind)}
+        onClick={() => count > 1 && stringToRender[ind]!==" " && handleDeleteChar(stringToRender[ind],ind)}
       >
         <span className="char">{stringToRender[ind]}</span>
         {count > 1 && stringToRender[ind]!==" " && <span className="delete-icon">X</span>}
       </div>
     );
-    if (count > 1) {
+    if (count > 1 && stringToRender[ind]!==" ") {
       success = false;
     }
   }
