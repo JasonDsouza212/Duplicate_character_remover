@@ -5,111 +5,117 @@ function App() {
   const [inputValue, setInputValue] = useState('');
   const [stringToEdit, setStringToEdit] = useState('');
   const [resultString, setResultString] = useState('');
+  const [originalString, setOriginalString] = useState('');
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (inputValue.trim() === '') {
-      alert('Please provide a non-empty value.');
+const handleSubmit = (event) => {
+  event.preventDefault();
+  if (inputValue.trim() === '') {
+    alert('Please provide a non-empty value.');
+  } else {
+    setStringToEdit(inputValue.replace(/\s+/g, ' ').trim().toUpperCase());
+    setOriginalString(inputValue.replace(/\s+/g, ' ').trim().toUpperCase());
+    setInputValue('');
+  }
+};
+
+const handleInputChange = (event) => {
+  setInputValue(event.target.value);
+};
+
+const handleDeleteChar = (charToDelete,index) => {
+  console.log(index+" this is the index")
+      let ans="";
+      for(let i=0;i<stringToEdit.length;i++){
+          if(stringToEdit[i]!==charToDelete || i===index){
+              ans=ans+stringToEdit[i];
+          }
+          
+      }
+  setResultString(ans);
+  setStringToEdit(ans);
+};
+ 
+const renderString = (stringToRender) => {
+  stringToRender = stringToRender.replace(/\s+/g, ' ').trim()
+  const charCounts = {};
+  for (const char of stringToRender) {
+    if (charCounts[char]) {
+      charCounts[char]++;
     } else {
-      setStringToEdit(inputValue);
-      setInputValue('');
+      charCounts[char] = 1;
     }
-  };
+  }
 
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
-  };
-
-  // const handleDeleteChar = (charToDelete) => {
-  //   const charArray = stringToEdit.split('');
-  //   const filteredArray = charArray.filter((char) => char !== charToDelete);
-  //   const newString = filteredArray.join('');
-  //   setResultString(newString);
-  //   setStringToEdit(newString);
-  // };
-  const handleDeleteChar = (charToDelete) => {
-    let charArray = stringToEdit.split('');
-    let i = 0;
-    while (i < charArray.length) {
-      if (charArray[i] === charToDelete) {
-        const startIndex = i;
-        let count = 0;
-        while (i < charArray.length && charArray[i] === charToDelete) {
-          count++;
-          i++;
-        }
-        charArray.splice(startIndex, count);
-      } else {
-        i++;
-      }
-    }
-    const newString = charArray.join('');
-    setResultString(newString);
-    setStringToEdit(newString);
+  const renderedChars = [];
+  let success = true;
   
-  };
-
-
-  const renderString = (stringToRender) => {
-    const charCounts = {};
-    let maxCount = 1;
-    for (const char of stringToRender) {
-      if (charCounts[char]) {
-        charCounts[char]++;
-        maxCount = Math.max(maxCount, charCounts[char]);
-      } else {
-        charCounts[char] = 1;
-      }
+  for (let ind=0;ind<stringToRender.length;ind++) {   
+    const count = charCounts[stringToRender[ind]];
+    const color = count > 1 && stringToRender[ind]!==" " ? `rgb(${255 - (count * 20)}, 255, 255)` : '#fff';
+    renderedChars.push(
+      <div
+        key={ind}
+        className="char-card"
+        style={{ backgroundColor: color }}
+        onClick={() => count > 1 && stringToRender[ind]!==" " && handleDeleteChar(stringToRender[ind],ind)}
+      >
+        <span className="char">{stringToRender[ind]}</span>
+        {count > 1 && stringToRender[ind]!==" " && <span className="delete-icon">X</span>}
+      </div>
+    );
+    if (count > 1 && stringToRender[ind]!==" ") {
+      success = false;
     }
+  }
 
-    const renderedChars = [];
-    for (const char of stringToRender) {
-      const count = charCounts[char];
-      const color = count > 1 ? `rgb(${255 - (count * 20)}, 255, 255)` : '#fff';
-      renderedChars.push(
-        <div
-          key={`${char}_${count}`}
-          className="char-card"
-          style={{ backgroundColor: color }}
-          onClick={() => count > 1 && handleDeleteChar(char)}
-        >
-          <span className="char">{char}</span>
-          {count > 1 && <span className="delete-icon">X</span>}
-        </div>
-      );
-    }
-
-    return renderedChars;
-  };
+  return (
+    <div className="render-container">
+      <div className="string-container">{renderedChars}</div> 
+      {success ? ( 
+        <h2 className="success-header">Success! No more duplicates.</h2>
+      ) : (
+        <h2 className="edit-header">click on a character to delete all of its duplicates, as there are some characters that are repeating</h2>
+      )}
+    </div>
+  );
+};
 
   const handleGoBack = () => {
     setStringToEdit('');
     setResultString('');
+    setOriginalString('');
   };
 
   return (
     <div className="app">
       {stringToEdit ? (
-        <div>
-          <h1>Duplicate Character Remover</h1>
-          <h2>Original String: {stringToEdit}</h2>
-          <div className="string-container">{renderString(stringToEdit)}</div>
-          {resultString ? (
-            <div>
-              <h2>Resultant String: {resultString}</h2>
-              <h2 className="success-header">Success! No more duplicates.</h2>
+        <div className='middle'>
+          <h1 class="large rise">Duplicate Character Remover</h1>
+          <article class="cta">
+            <div class="cta__text-column">
+              <h2>Original String </h2>
+              <a href="##">{originalString}</a>
             </div>
-          ) : (
-            <h2>Please click on a character to delete all duplicates.</h2>
+          </article>
+          <div className="string-container">{renderString(stringToEdit)}</div>
+          {resultString && (
+          <div>
+            <article class="cta">
+              <div class="cta__text-column">
+                <h2>Resultant String</h2>
+                <a href="##">{resultString}</a>
+              </div>
+            </article>
+          </div>
           )}
-          <button className="back-button" onClick={handleGoBack}>
+          <button className="back-button btn" onClick={handleGoBack}>
             Back
           </button>
         </div>
       ) : (
         <form className="input-form" onSubmit={handleSubmit}>
-          <h1>Duplicate Character Remover</h1>
-          <label htmlFor="input-field">Enter a string:</label>
+          <h1 class="large rise">Duplicate Character Remover</h1>
+          <label htmlFor="input-field" className='input-title'>Enter a string:</label>
           <input
             type="text"
             id="input-field"
@@ -117,7 +123,7 @@ function App() {
             value={inputValue}
             onChange={handleInputChange}
           />
-          <button type="submit" className="submit-button">
+          <button type="submit" className="submit-button btn">
             Submit
           </button>
         </form>

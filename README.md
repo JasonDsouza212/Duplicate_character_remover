@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+<div id="header" align="center">
+  <img src="https://i.ibb.co/Nr4w615/Screenshot-from-2023-03-15-16-53-49.png" alt="Screenshot-from-2023-03-15-16-53-49"><br>
+  <img src="https://i.ibb.co/mhRdgGy/Screenshot-from-2023-03-17-11-10-46.png" alt="Screenshot-from-2023-03-17-11-10-46" border="0">
+    <h1> Duplicate Character Remover </h1>
+    <p><strong><em>"Say goodbye to repetitive characters 👋👋"</em></strong></p>
+    <!-- to change tagline if necessary -->
+    </div> <br>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Welcome to :<br> Duplicate Character Remover
 
-## Available Scripts
+# 🎥 Project Overview
 
-In the project directory, you can run:
+# 🏃‍♂️ How to run the project locally?
 
-### `npm start`
+### Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This project uses:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [React](https://reactjs.org/)
 
-### `npm test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Before installation, you need to have the following:
 
-### `npm run build`
+- [Node](https://nodejs.org) installed
+- Basic knowledge of [Git](https://git-scm.com/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 🛠️ Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Fork the repo
+2. Clone the repository `git clone https://github.com/your-username/HousewareHQ/houseware---frontend-engineering-octernship-JasonDsouza212.git`
+3. Run `cd houseware---frontend-engineering-octernship-JasonDsouza212` to change the working directory
+4. Run `cd app` to change the working directory
+4. Run `npm ci` Or `npm clean-install` to install all dependencies
+5. Run `npm start` to start the application
+6. Visit [http://localhost:3000](http://localhost:3000) to view the application
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Screen 1:
++ Provides an input field and a button with text 'Submit'.
++ User can input any value in the input field.
++ Clicking on the button redirects the user to screen 2.
++ If the input field is empty or has only space characters, an alert is shown asking the user to provide a non-empty value. In this scenario, the user is not redirected to screen 2.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Screen 2:
++ Iterates over each character of the string and renders them as a card on the UI.
++ Each card has the character and a delete icon on top
++ Clicking on the delete icon deletes all duplicate instances of the chosen character in the string. Only the clicked instance of the character remains on the screen.
++ Cards for the same characters have the same background color.
++ If there are no more characters with greater than 1 appearance in the string, a success header is rendered.
++ The original string and the new resultant string are shown.
++ A back button is provided to go back to screen 1.
++ If the user goes back to screen 1, the input field is cleared/empty.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## The app 🖥️ takes care of all the edge cases mentioned in the assignment 📋
++ It deletes all duplicates, regardless of capitalization, by converting all input characters to uppercase during processing.
++ The app can handle any non-alphabetic characters, including special characters, as input and perform operations on them.
++ It can remove leading and trailing spaces from input and automatically delete extra spaces between two words when the submit button is clicked.
++ When deleting a long string with multiple words, if a word is deleted in the middle of the process, it will automatically remove the extra space to avoid having two spaces between words.
++ Also, the mobile view is taken care of using media queries.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Enhancements
++ when the input string is large the mobile UI doesnt look too good 
++ if the app has extra functionalities we can create routes for each function
++ I intentionally treadted all characters as Uppercase beasue in sentence no matter what case the character it gives same value in a string to do this I added another algo dor it if its not needed We can remove that by this all uppercase and lower case can be distinguied.
 
-## Learn More
+## Socials
+[Portfolio](https://jasondsouza212.github.io/My-Portfolio/) |
+[Twitter](https://twitter.com/_Jason_Dsouza) |
+[Email](mailto:jasondsouza212@gmail.com) |
+[Github](https://github.com/JasonDsouza212) |
+[Linkedin](https://www.linkedin.com/in/jason-dsouza-130b421ba/) 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
