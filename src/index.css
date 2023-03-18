@@ -2,7 +2,7 @@
 body,
 html {
 	height: 100%;
-	background-color: #ffdd40;
+	background-color: #60d394;
 	color: #333;
 }
 
@@ -98,7 +98,7 @@ input {
 }
 
 .success-header {
-  color: #008000;
+  color: #2c7b50;
   margin-top: 30px;
   border: 2px solid #000;
   padding: 10px 20px; 
@@ -107,7 +107,7 @@ input {
 }
 
 .edit-header {
-  color: #ff19cd;
+  color: ffa29b#E63946;
   margin-top: 30px;
   border: 2px solid #000;
   padding: 10px 20px; 
@@ -120,10 +120,10 @@ input {
   --shadowColor: 187 60% 40%;
   display: flex;
   flex-wrap: wrap;
-  background: hsl(187 70% 85%);
+  background: #ee6055;
   max-width: 30rem;
   width: 100%;
-  box-shadow: 0.65rem 0.65rem 0 hsl(var(--shadowColor) / 1);
+  box-shadow: 0.60rem 0.60rem 0 #383838;
   border-radius: 0.8rem;
   overflow: hidden;
   border: 0.5rem solid;
@@ -145,7 +145,7 @@ input {
   color: black;
   padding: 01rem 1rem;
   text-decoration: none;
-  background: hsl(187 75% 64%);
+  background: #ffd97d;
   border-radius: 0.6rem;
   font-weight: 700;
   border: 0.35rem solid;
@@ -160,10 +160,11 @@ input {
   font-weight: bold;
   font-family: "Open Sans", sans-serif;
   letter-spacing: 5px;
-  background: #ff19cd;
+  background: #333;
   border: 2px solid black;
   box-shadow: 0px 0px 0px rgba(0,0,0,0.4);
   transition: 500ms;
+  color: white;
 }
 
 .btn:hover {
