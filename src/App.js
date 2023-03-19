@@ -39,7 +39,6 @@ const handleDeleteChar = (charToDelete,index,stringtodel) => {
  
 // The card is designed here
 const renderString = (stringToRender) => {
-  console.log(stringToRender)
   stringToRender = stringToRender.replace(/\s+/g, ' ').trim()
   const charCounts = {};
   for (const char of stringToRender) {
