@@ -95,7 +95,7 @@ const renderString = (stringToRender) => {
     <div className="app">
       {stringToEdit ? (
         <div>
-          <h1 class="large rise">Duplicate Character Remover</h1>
+          <h1 class="large">Duplicate Character Remover</h1>
           <div className='middle'>
             <article class="cta">
               <div class="cta__text-column">

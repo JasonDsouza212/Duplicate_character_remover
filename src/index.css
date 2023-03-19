@@ -30,6 +30,8 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
 label {
@@ -261,6 +263,9 @@ input {
   }
   .large{
     font-size: 2rem;
+  }
+  .rise{
+    font-size: 3.5rem;
   }
   .cta{
     min-width: 22rem;
