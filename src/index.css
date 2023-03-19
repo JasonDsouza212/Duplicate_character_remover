@@ -261,12 +261,15 @@ input {
     margin-top: 10px;
     margin-left: 0;
   }
+  
   .large{
     font-size: 2rem;
   }
+
   .rise{
     font-size: 3.5rem;
   }
+
   .cta{
     min-width: 22rem;
     max-width: 22rem;

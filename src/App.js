@@ -25,12 +25,11 @@ const handleInputChange = (event) => {
 };
 
 // This function deletes the same character,
-const handleDeleteChar = (charToDelete,index) => {
-  console.log(index+" this is the index")
+const handleDeleteChar = (charToDelete,index,stringtodel) => {
       let ans="";
-      for(let i=0;i<stringToEdit.length;i++){
-          if(stringToEdit[i]!==charToDelete || i===index){
-              ans=ans+stringToEdit[i];
+      for(let i=0;i<stringtodel.length;i++){
+          if(stringtodel[i]!==charToDelete || i===index){
+              ans=ans+stringtodel[i];
           }
           
       }
@@ -40,6 +39,7 @@ const handleDeleteChar = (charToDelete,index) => {
  
 // The card is designed here
 const renderString = (stringToRender) => {
+  console.log(stringToRender)
   stringToRender = stringToRender.replace(/\s+/g, ' ').trim()
   const charCounts = {};
   for (const char of stringToRender) {
@@ -61,7 +61,7 @@ const renderString = (stringToRender) => {
         key={ind}
         className="char-card"
         style={{ backgroundColor: color }}
-        onClick={() => count > 1 && stringToRender[ind]!==" " && handleDeleteChar(stringToRender[ind],ind)}
+        onClick={() => count > 1 && stringToRender[ind]!==" " && handleDeleteChar(stringToRender[ind],ind,stringToRender)}
       >
         <span className="char">{stringToRender[ind]}</span>
         {count > 1 && stringToRender[ind]!==" " && <span className="delete-icon">X</span>}
