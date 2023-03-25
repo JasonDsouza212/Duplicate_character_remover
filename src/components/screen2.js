@@ -1,20 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import {MyContext} from '../App'
 import OriginalString from '../components/originalString';
 import ResultantString from '../components/resultatntstring';
 
-function Screen2(props) {
+function Screen2() {
+    const {renderString, stringToEdit ,resultString ,handleGoBack } = useContext(MyContext)
   return (
     <div>
     <h1 class="large">Duplicate Character Remover</h1>
     <div className='middle'>
-    <OriginalString originalString={props.originalString}/>
-        <div className="string-container">{props.renderString(props.stringToEdit)}</div>
-            {props.resultString && (
+    <OriginalString />
+        <div className="string-container">{renderString(stringToEdit)}</div>
+            {resultString && (
                 <div>
-                    <ResultantString resultString={props.resultString} />
+                    <ResultantString />
                 </div>
             )}
-            <button className="back-button btn" onClick={props.goback}>
+            <button className="back-button btn" onClick={handleGoBack}>
                 Back
             </button>
         </div>

@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import {MyContext} from '../App'
 
-function ResultantString(props) {
+function ResultantString() {
+  const {resultString} = useContext(MyContext)
   return (
     <article className="cta">
       <div className="cta__text-column">
         <h2>Original String</h2>
-        <a href="##">{props.resultString}</a>
+        <a href="##">{resultString}</a>
       </div>
     </article>
   );

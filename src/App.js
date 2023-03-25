@@ -1,15 +1,17 @@
-import React, {useState } from 'react';
+import React, {useState ,createContext } from 'react';
 import Inputform from './components/inputform';
 import Screen2 from './components/screen2';
-// import Inputform from './components/inputform';
 import './index.css';
 
+const MyContext = createContext();
 function App() {
   const [inputValue, setInputValue] = useState('');
   const [stringToEdit, setStringToEdit] = useState('');
   const [resultString, setResultString] = useState('');
   const [originalString, setOriginalString] = useState('');
 
+
+  
 // To submit the input and save
 const handleSubmit = (event) => {
   event.preventDefault();
@@ -22,10 +24,13 @@ const handleSubmit = (event) => {
   }
 };
 
+
 // To save the input value in inputValue
 const handleInputChange = (event) => {
   setInputValue(event.target.value);
 };
+
+
 
 // This function deletes the same character,
 const handleDeleteChar = (charToDelete,index,stringtodel) => {
@@ -40,6 +45,8 @@ const handleDeleteChar = (charToDelete,index,stringtodel) => {
   setStringToEdit(ans);
 };
  
+
+
 // The card is designed here
 const renderString = (stringToRender) => {
   stringToRender = stringToRender.replace(/\s+/g, ' ').trim()
@@ -86,6 +93,8 @@ const renderString = (stringToRender) => {
   );
 };
 
+
+
 // sets all values to empty 
   const handleGoBack = () => {
     setStringToEdit('');
@@ -93,15 +102,32 @@ const renderString = (stringToRender) => {
     setOriginalString('');
   };
 
+
+
   return (
     <div className="app">
+      {/* useContext to pass values to hierarchy of components */}
+      <MyContext.Provider 
+      value={{
+         originalString, 
+         renderString, 
+         stringToEdit,
+         resultString,
+         handleSubmit, 
+         handleInputChange,
+         inputValue,
+         handleGoBack
+      }}>
+      {/* Main UI componenents goes here  */}
       {stringToEdit ? (
-        <Screen2 originalString={originalString} renderString={renderString} stringToEdit={stringToEdit} resultString={resultString} goback={handleGoBack} />
+        <Screen2/>
       ) : (
-        <Inputform onSubmit={handleSubmit} value={inputValue} onChange={handleInputChange}/>
+        <Inputform />
       )}
+       </MyContext.Provider>
     </div>
   );
 }
 
 export default App;
+export {MyContext};
