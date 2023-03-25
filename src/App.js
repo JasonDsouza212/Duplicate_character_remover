@@ -1,4 +1,7 @@
 import React, {useState } from 'react';
+import Inputform from './components/inputform';
+import Screen2 from './components/screen2';
+// import Inputform from './components/inputform';
 import './index.css';
 
 function App() {
@@ -93,46 +96,9 @@ const renderString = (stringToRender) => {
   return (
     <div className="app">
       {stringToEdit ? (
-        <div>
-          <h1 class="large">Duplicate Character Remover</h1>
-          <div className='middle'>
-            <article class="cta">
-              <div class="cta__text-column">
-                <h2>Original String </h2>
-                <a href="##">{originalString}</a>
-              </div>
-            </article>
-            <div className="string-container">{renderString(stringToEdit)}</div>
-            {resultString && (
-            <div>
-              <article class="cta">
-                <div class="cta__text-column">
-                  <h2>Resultant String</h2>
-                  <a href="##">{resultString}</a>
-                </div>
-              </article>
-            </div>
-            )}
-            <button className="back-button btn" onClick={handleGoBack}>
-              Back
-            </button>
-          </div>
-        </div>
+        <Screen2 originalString={originalString} renderString={renderString} stringToEdit={stringToEdit} resultString={resultString} goback={handleGoBack} />
       ) : (
-        <form className="input-form" onSubmit={handleSubmit}>
-          <h1 class="large rise">Duplicate Character Remover</h1>
-          <label htmlFor="input-field" className='input-title'>Enter a string:</label>
-          <input
-            type="text"
-            id="input-field"
-            name="input-field"
-            value={inputValue}
-            onChange={handleInputChange}
-          />
-          <button type="submit" className="submit-button btn">
-            Submit
-          </button>
-        </form>
+        <Inputform onSubmit={handleSubmit} value={inputValue} onChange={handleInputChange}/>
       )}
     </div>
   );
