@@ -1,0 +1,18 @@
+.success-header {
+    color: #2c7b50;
+    margin-top: 30px;
+    border: 2px solid #000;
+    padding: 10px 20px; 
+    background-color: #EEE; 
+    display: inline-block; 
+  }
+  
+  .edit-header {
+    color: ffa29b#E63946;
+    margin-top: 30px;
+    border: 2px solid #000;
+    padding: 10px 20px; 
+    background-color: #EEE; 
+    display: inline-block; 
+  }
+  

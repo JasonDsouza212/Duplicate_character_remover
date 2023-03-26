@@ -1,7 +1,7 @@
 import React, {useState ,createContext } from 'react';
 import Inputform from './components/inputform';
 import Screen2 from './components/screen2';
-import './index.css';
+import './css/index.css';
 
 const MyContext = createContext();
 function App() {
