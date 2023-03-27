@@ -1,6 +1,6 @@
 <div id="header" align="center">
   <img src="https://i.ibb.co/r2yR6QM/Screenshot-from-2023-03-18-20-19-36.png" alt="Screenshot-from-2023-03-18-20-19-36" border="0"><br>
-  <img src="https://i.ibb.co/bHcjXGp/Screenshot-from-2023-03-18-21-53-07.png" alt="Screenshot-from-2023-03-18-21-53-07" border="0">
+  <img src="https://i.ibb.co/HqMksBz/Screenshot-from-2023-03-27-21-32-36.png" " border="0">
     <h1> Duplicate Character Remover </h1>
     <p><strong><em>"Say goodbye to repetitive characters 👋👋"</em></strong></p>
     <!-- to change tagline if necessary -->
